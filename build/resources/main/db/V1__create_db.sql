@@ -1,0 +1,29 @@
+CREATE TABLE client (
+    id SERIAL NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    CONSTRAINT client_pk PRIMARY KEY (id)
+);
+
+CREATE TABLE card (
+    id SERIAL NOT NULL,
+    number VARCHAR(255) NOT NULL,
+    currency VARCHAR(255) NOT NULL,
+    cvv INT NOT NULL,
+    date VARCHAR(255) NOT NULL,
+    id_client BIGINT NOT NULL REFERENCES client (id) ON UPDATE CASCADE ON DELETE CASCADE,
+    balance FLOAT NOT NULL,
+    CONSTRAINT card_pk PRIMARY KEY (id)
+);
+
+CREATE TABLE access (
+    id SERIAL NOT NULL,
+    code VARCHAR(45) NOT NULL,
+    CONSTRAINT access_pk PRIMARY KEY (id)
+);
+
+CREATE TABLE message (
+     id SERIAL NOT NULL,
+     text VARCHAR(45) NOT NULL,
+     CONSTRAINT access_pk PRIMARY KEY (id)
+);
